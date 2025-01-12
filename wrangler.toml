@@ -4,9 +4,9 @@ main = "src/index.ts"
 compatibility_date = "2025-01-09"
 compatibility_flags = ["nodejs_compat"]
 
-vars = { COHERE_EMBEDDING_MODEL = "embed-multilingual-v3.0" }
-
 observability = { enabled = true }
+
+vars = { COHERE_EMBEDDING_MODEL = "embed-multilingual-v3.0" }
 
 d1_databases = [
 	{ binding = "PAGE_METADATA", database_name = "web-rag-composer-page-metadata-local", database_id = "4bf05ffe-6461-499b-8e64-a7364d076ab4", preview_database_id = "4bf05ffe-6461-499b-8e64-a7364d076ab4" }
@@ -21,6 +21,8 @@ vectorize = [
 ]
 
 [env.dev]
+vars = { COHERE_EMBEDDING_MODEL = "embed-multilingual-v3.0" }
+
 d1_databases = [
 	{ binding = "PAGE_METADATA", database_name = "web-rag-composer-page-metadata-dev", database_id = "56f92781-5084-4333-a331-9cfdfaa0710f" }
 ]
@@ -34,6 +36,8 @@ vectorize = [
 ]
 
 [env.prod]
+vars = { COHERE_EMBEDDING_MODEL = "embed-multilingual-v3.0" }
+
 d1_databases = [
 	{ binding = "PAGE_METADATA", database_name = "web-rag-composer-page-metadata", database_id = "9deb74a3-287b-4d8b-a020-6662cfbd9a01" }
 ]
