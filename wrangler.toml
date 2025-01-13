@@ -35,6 +35,14 @@ vectorize = [
 	{ binding = "KNOWLEDGE_INDEX", index_name = "web-rag-composer-knowledge-index-dev" }
 ]
 
+queues.consumers = [
+	{ queue = "generate-embedding-dev", max_concurrency = 1, max_batch_size = 5, dead_letter_queue = "generate-embedding-dlq-dev" }
+]
+
+queues.producers = [
+	{ binding = "GENERATE_EMBEDDING_QUEUE", queue = "generate-embedding-dev"}
+]
+
 [env.prod]
 vars = { COHERE_EMBEDDING_MODEL = "embed-multilingual-v3.0" }
 
@@ -48,4 +56,12 @@ r2_buckets = [
 
 vectorize = [
 	{ binding = "KNOWLEDGE_INDEX", index_name = "web-rag-composer-knowledge-index" }
+]
+
+queues.consumers = [
+	{ queue = "generate-embedding-prod", max_concurrency = 1, max_batch_size = 5, dead_letter_queue = "generate-embedding-dlq-prod" }
+]
+
+queues.producers = [
+	{ binding = "GENERATE_EMBEDDING_QUEUE", queue = "generate-embedding-prod"}
 ]
